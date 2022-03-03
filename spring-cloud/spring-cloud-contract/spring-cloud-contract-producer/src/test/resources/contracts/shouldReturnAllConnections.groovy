@@ -11,8 +11,8 @@ Contract.make {
 //				parameter("offset", 0)
 				parameter("offset", $(c(matching("\\d+")), p(0)))
 				parameter("limit", $(c(anInteger()), p(5)))
-//				parameter("offset", $(c(anyInteger()), p(0)))       -> bad generated stub
-//				parameter("limit", $(c(anyPositiveInt()), p(5)))    -> bad generated stub
+//				parameter("offset", $(c(anyInteger()), p(0)))       -> bad generated wiremock stub
+//				parameter("limit", $(c(anyPositiveInt()), p(5)))    -> bad generated wiremock stub
 				parameter("sort", $(c(regex("[\\+-]?[a-zA-Z0-9]+")), p("-startDate")))
 				parameter("sort", $(c(regex("[\\+-]?[a-zA-Z0-9]+")), p("+type")))
 				parameter("sort", $(c(regex("[\\+-]?[a-zA-Z0-9]+")), p("state")))

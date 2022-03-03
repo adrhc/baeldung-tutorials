@@ -13,33 +13,44 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
 @AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL,
-        ids = "com.baeldung.spring.cloud:spring-cloud-contract-producer:+:stubs:8090")
+		ids = "com.baeldung.spring.cloud:spring-cloud-contract-producer:+:stubs:8090")
 public class BasicMathControllerIntegrationTest {
+	@Autowired
+	private MockMvc mockMvc;
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Test
+	public void given_WhenPassEvenNumberInQueryParam_ThenReturnEven() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=2")
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Even"));
+	}
 
-    @Test
-    public void given_WhenPassEvenNumberInQueryParam_ThenReturnEven() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=2")
-          .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isOk())
-          .andExpect(content().string("Even"));
-    }
+	@Test
+	public void given_WhenPassOddNumberInQueryParam_ThenReturnOdd() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=1")
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Odd"));
+	}
 
-    @Test
-    public void given_WhenPassOddNumberInQueryParam_ThenReturnOdd() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=1")
-          .contentType(MediaType.APPLICATION_JSON))
-          .andExpect(status().isOk())
-          .andExpect(content().string("Odd"));
-    }
+	@Test
+	public void given_WhenAskingForFilteredConnections_ThenReturnFiltered() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/connections")
+						.param("offset", "1")
+						.param("limit", "7")
+						.param("sort", "state")
+						.param("sort", "-startDate")
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.offset").value(0))
+				.andExpect(jsonPath("$.limit").value(5));
+	}
 }

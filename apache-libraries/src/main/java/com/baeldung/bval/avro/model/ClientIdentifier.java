@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.baeldung.avro.model;
+package com.baeldung.bval.avro.model;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -127,8 +127,8 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * Creates a new ClientIdentifier RecordBuilder.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static com.baeldung.avro.model.ClientIdentifier.Builder newBuilder() {
-    return new com.baeldung.avro.model.ClientIdentifier.Builder();
+  public static ClientIdentifier.Builder newBuilder() {
+    return new ClientIdentifier.Builder();
   }
 
   /**
@@ -136,8 +136,8 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing builder to copy.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static com.baeldung.avro.model.ClientIdentifier.Builder newBuilder(com.baeldung.avro.model.ClientIdentifier.Builder other) {
-    return new com.baeldung.avro.model.ClientIdentifier.Builder(other);
+  public static ClientIdentifier.Builder newBuilder(ClientIdentifier.Builder other) {
+    return new ClientIdentifier.Builder(other);
   }
 
   /**
@@ -145,8 +145,8 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing instance to copy.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static com.baeldung.avro.model.ClientIdentifier.Builder newBuilder(com.baeldung.avro.model.ClientIdentifier other) {
-    return new com.baeldung.avro.model.ClientIdentifier.Builder(other);
+  public static ClientIdentifier.Builder newBuilder(ClientIdentifier other) {
+    return new ClientIdentifier.Builder(other);
   }
 
   /**
@@ -167,7 +167,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.baeldung.avro.model.ClientIdentifier.Builder other) {
+    private Builder(ClientIdentifier.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.hostName)) {
         this.hostName = data().deepCopy(fields()[0].schema(), other.hostName);
@@ -183,7 +183,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing ClientIdentifier instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.baeldung.avro.model.ClientIdentifier other) {
+    private Builder(ClientIdentifier other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.hostName)) {
         this.hostName = data().deepCopy(fields()[0].schema(), other.hostName);
@@ -208,7 +208,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'hostName'.
       * @return This builder.
       */
-    public com.baeldung.avro.model.ClientIdentifier.Builder setHostName(java.lang.CharSequence value) {
+    public ClientIdentifier.Builder setHostName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.hostName = value;
       fieldSetFlags()[0] = true;
@@ -228,7 +228,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'hostName' field.
       * @return This builder.
       */
-    public com.baeldung.avro.model.ClientIdentifier.Builder clearHostName() {
+    public ClientIdentifier.Builder clearHostName() {
       hostName = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -247,7 +247,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'ipAddress'.
       * @return This builder.
       */
-    public com.baeldung.avro.model.ClientIdentifier.Builder setIpAddress(java.lang.CharSequence value) {
+    public ClientIdentifier.Builder setIpAddress(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.ipAddress = value;
       fieldSetFlags()[1] = true;
@@ -267,7 +267,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'ipAddress' field.
       * @return This builder.
       */
-    public com.baeldung.avro.model.ClientIdentifier.Builder clearIpAddress() {
+    public ClientIdentifier.Builder clearIpAddress() {
       ipAddress = null;
       fieldSetFlags()[1] = false;
       return this;

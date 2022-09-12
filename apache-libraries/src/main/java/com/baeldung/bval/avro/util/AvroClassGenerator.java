@@ -1,4 +1,4 @@
-package com.baeldung.avro.util;
+package com.baeldung.bval.avro.util;
 
 import org.apache.avro.Schema;
 import org.apache.avro.compiler.specific.SpecificCompiler;

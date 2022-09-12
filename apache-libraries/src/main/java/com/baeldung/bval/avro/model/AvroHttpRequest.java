@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.baeldung.avro.model;
+package com.baeldung.bval.avro.model;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -52,9 +52,9 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   }
 
   @Deprecated public long requestTime;
-  @Deprecated public com.baeldung.avro.model.ClientIdentifier clientIdentifier;
+  @Deprecated public ClientIdentifier clientIdentifier;
   @Deprecated public java.util.List<java.lang.CharSequence> employeeNames;
-  @Deprecated public com.baeldung.avro.model.Active active;
+  @Deprecated public Active active;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -70,7 +70,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param employeeNames The new value for employeeNames
    * @param active The new value for active
    */
-  public AvroHttpRequest(java.lang.Long requestTime, com.baeldung.avro.model.ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames, com.baeldung.avro.model.Active active) {
+  public AvroHttpRequest(java.lang.Long requestTime, ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames, Active active) {
     this.requestTime = requestTime;
     this.clientIdentifier = clientIdentifier;
     this.employeeNames = employeeNames;
@@ -94,9 +94,9 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: requestTime = (java.lang.Long)value$; break;
-    case 1: clientIdentifier = (com.baeldung.avro.model.ClientIdentifier)value$; break;
+    case 1: clientIdentifier = (ClientIdentifier)value$; break;
     case 2: employeeNames = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 3: active = (com.baeldung.avro.model.Active)value$; break;
+    case 3: active = (Active)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -121,7 +121,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'clientIdentifier' field.
    * @return The value of the 'clientIdentifier' field.
    */
-  public com.baeldung.avro.model.ClientIdentifier getClientIdentifier() {
+  public ClientIdentifier getClientIdentifier() {
     return clientIdentifier;
   }
 
@@ -129,7 +129,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'clientIdentifier' field.
    * @param value the value to set.
    */
-  public void setClientIdentifier(com.baeldung.avro.model.ClientIdentifier value) {
+  public void setClientIdentifier(ClientIdentifier value) {
     this.clientIdentifier = value;
   }
 
@@ -153,7 +153,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'active' field.
    * @return The value of the 'active' field.
    */
-  public com.baeldung.avro.model.Active getActive() {
+  public Active getActive() {
     return active;
   }
 
@@ -161,7 +161,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'active' field.
    * @param value the value to set.
    */
-  public void setActive(com.baeldung.avro.model.Active value) {
+  public void setActive(Active value) {
     this.active = value;
   }
 
@@ -169,8 +169,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Creates a new AvroHttpRequest RecordBuilder.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static com.baeldung.avro.model.AvroHttpRequest.Builder newBuilder() {
-    return new com.baeldung.avro.model.AvroHttpRequest.Builder();
+  public static AvroHttpRequest.Builder newBuilder() {
+    return new AvroHttpRequest.Builder();
   }
 
   /**
@@ -178,8 +178,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing builder to copy.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static com.baeldung.avro.model.AvroHttpRequest.Builder newBuilder(com.baeldung.avro.model.AvroHttpRequest.Builder other) {
-    return new com.baeldung.avro.model.AvroHttpRequest.Builder(other);
+  public static AvroHttpRequest.Builder newBuilder(AvroHttpRequest.Builder other) {
+    return new AvroHttpRequest.Builder(other);
   }
 
   /**
@@ -187,8 +187,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing instance to copy.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static com.baeldung.avro.model.AvroHttpRequest.Builder newBuilder(com.baeldung.avro.model.AvroHttpRequest other) {
-    return new com.baeldung.avro.model.AvroHttpRequest.Builder(other);
+  public static AvroHttpRequest.Builder newBuilder(AvroHttpRequest other) {
+    return new AvroHttpRequest.Builder(other);
   }
 
   /**
@@ -198,10 +198,10 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
     implements org.apache.avro.data.RecordBuilder<AvroHttpRequest> {
 
     private long requestTime;
-    private com.baeldung.avro.model.ClientIdentifier clientIdentifier;
-    private com.baeldung.avro.model.ClientIdentifier.Builder clientIdentifierBuilder;
+    private ClientIdentifier clientIdentifier;
+    private ClientIdentifier.Builder clientIdentifierBuilder;
     private java.util.List<java.lang.CharSequence> employeeNames;
-    private com.baeldung.avro.model.Active active;
+    private Active active;
 
     /** Creates a new Builder */
     private Builder() {
@@ -212,7 +212,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.baeldung.avro.model.AvroHttpRequest.Builder other) {
+    private Builder(AvroHttpRequest.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.requestTime)) {
         this.requestTime = data().deepCopy(fields()[0].schema(), other.requestTime);
@@ -223,7 +223,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
         fieldSetFlags()[1] = true;
       }
       if (other.hasClientIdentifierBuilder()) {
-        this.clientIdentifierBuilder = com.baeldung.avro.model.ClientIdentifier.newBuilder(other.getClientIdentifierBuilder());
+        this.clientIdentifierBuilder = ClientIdentifier.newBuilder(other.getClientIdentifierBuilder());
       }
       if (isValidValue(fields()[2], other.employeeNames)) {
         this.employeeNames = data().deepCopy(fields()[2].schema(), other.employeeNames);
@@ -239,7 +239,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing AvroHttpRequest instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.baeldung.avro.model.AvroHttpRequest other) {
+    private Builder(AvroHttpRequest other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.requestTime)) {
         this.requestTime = data().deepCopy(fields()[0].schema(), other.requestTime);
@@ -273,7 +273,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'requestTime'.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder setRequestTime(long value) {
+    public AvroHttpRequest.Builder setRequestTime(long value) {
       validate(fields()[0], value);
       this.requestTime = value;
       fieldSetFlags()[0] = true;
@@ -293,7 +293,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'requestTime' field.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder clearRequestTime() {
+    public AvroHttpRequest.Builder clearRequestTime() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -302,7 +302,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'clientIdentifier' field.
       * @return The value.
       */
-    public com.baeldung.avro.model.ClientIdentifier getClientIdentifier() {
+    public ClientIdentifier getClientIdentifier() {
       return clientIdentifier;
     }
 
@@ -311,7 +311,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'clientIdentifier'.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder setClientIdentifier(com.baeldung.avro.model.ClientIdentifier value) {
+    public AvroHttpRequest.Builder setClientIdentifier(ClientIdentifier value) {
       validate(fields()[1], value);
       this.clientIdentifierBuilder = null;
       this.clientIdentifier = value;
@@ -331,12 +331,12 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Gets the Builder instance for the 'clientIdentifier' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public com.baeldung.avro.model.ClientIdentifier.Builder getClientIdentifierBuilder() {
+    public ClientIdentifier.Builder getClientIdentifierBuilder() {
       if (clientIdentifierBuilder == null) {
         if (hasClientIdentifier()) {
-          setClientIdentifierBuilder(com.baeldung.avro.model.ClientIdentifier.newBuilder(clientIdentifier));
+          setClientIdentifierBuilder(ClientIdentifier.newBuilder(clientIdentifier));
         } else {
-          setClientIdentifierBuilder(com.baeldung.avro.model.ClientIdentifier.newBuilder());
+          setClientIdentifierBuilder(ClientIdentifier.newBuilder());
         }
       }
       return clientIdentifierBuilder;
@@ -347,7 +347,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder setClientIdentifierBuilder(com.baeldung.avro.model.ClientIdentifier.Builder value) {
+    public AvroHttpRequest.Builder setClientIdentifierBuilder(ClientIdentifier.Builder value) {
       clearClientIdentifier();
       clientIdentifierBuilder = value;
       return this;
@@ -365,7 +365,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'clientIdentifier' field.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder clearClientIdentifier() {
+    public AvroHttpRequest.Builder clearClientIdentifier() {
       clientIdentifier = null;
       clientIdentifierBuilder = null;
       fieldSetFlags()[1] = false;
@@ -385,7 +385,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'employeeNames'.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder setEmployeeNames(java.util.List<java.lang.CharSequence> value) {
+    public AvroHttpRequest.Builder setEmployeeNames(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[2], value);
       this.employeeNames = value;
       fieldSetFlags()[2] = true;
@@ -405,7 +405,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'employeeNames' field.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder clearEmployeeNames() {
+    public AvroHttpRequest.Builder clearEmployeeNames() {
       employeeNames = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -415,7 +415,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'active' field.
       * @return The value.
       */
-    public com.baeldung.avro.model.Active getActive() {
+    public Active getActive() {
       return active;
     }
 
@@ -424,7 +424,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'active'.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder setActive(com.baeldung.avro.model.Active value) {
+    public AvroHttpRequest.Builder setActive(Active value) {
       validate(fields()[3], value);
       this.active = value;
       fieldSetFlags()[3] = true;
@@ -444,7 +444,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'active' field.
       * @return This builder.
       */
-    public com.baeldung.avro.model.AvroHttpRequest.Builder clearActive() {
+    public AvroHttpRequest.Builder clearActive() {
       active = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -459,10 +459,10 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
         if (clientIdentifierBuilder != null) {
           record.clientIdentifier = this.clientIdentifierBuilder.build();
         } else {
-          record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (com.baeldung.avro.model.ClientIdentifier) defaultValue(fields()[1]);
+          record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (ClientIdentifier) defaultValue(fields()[1]);
         }
         record.employeeNames = fieldSetFlags()[2] ? this.employeeNames : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[2]);
-        record.active = fieldSetFlags()[3] ? this.active : (com.baeldung.avro.model.Active) defaultValue(fields()[3]);
+        record.active = fieldSetFlags()[3] ? this.active : (Active) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

@@ -1,8 +1,10 @@
 package com.baeldung.avro.util.serealization;
 
-import com.baeldung.avro.util.model.Active;
-import com.baeldung.avro.util.model.AvroHttpRequest;
-import com.baeldung.avro.util.model.ClientIdentifier;
+import com.baeldung.bval.avro.util.model.Active;
+import com.baeldung.bval.avro.util.model.AvroHttpRequest;
+import com.baeldung.bval.avro.util.model.ClientIdentifier;
+import com.baeldung.bval.avro.util.serealization.AvroDeSerealizer;
+import com.baeldung.bval.avro.util.serealization.AvroSerealizer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,6 +1,6 @@
-package com.baeldung.avro.util.serealization;
+package com.baeldung.bval.avro.util.serealization;
 
-import com.baeldung.avro.util.model.AvroHttpRequest;
+import com.baeldung.bval.avro.util.model.AvroHttpRequest;
 import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumWriter;
 import org.slf4j.Logger;

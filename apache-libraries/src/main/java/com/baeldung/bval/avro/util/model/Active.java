@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.baeldung.avro.util.model;
+package com.baeldung.bval.avro.util.model;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public enum Active {

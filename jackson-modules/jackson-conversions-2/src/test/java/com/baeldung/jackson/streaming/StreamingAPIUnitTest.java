@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
@@ -30,7 +31,15 @@ public class StreamingAPIUnitTest {
         jGenerator.writeStartArray();
         jGenerator.writeString("Poland");
         jGenerator.writeString("5th avenue");
+        IntStream.range(0, 619).forEach(it -> {
+            try {
+                jGenerator.writeString("address" + it);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         jGenerator.writeEndArray();
+        jGenerator.writeNullField("xxxxxxx");
         jGenerator.writeEndObject();
         jGenerator.close();
 

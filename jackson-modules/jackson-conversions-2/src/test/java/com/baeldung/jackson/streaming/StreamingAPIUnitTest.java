@@ -1,14 +1,21 @@
 package com.baeldung.jackson.streaming;
 
-import com.fasterxml.jackson.core.*;
-import org.junit.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.IntStream;
+
+import com.fasterxml.jackson.core.JsonEncoding;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Test;
 
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
@@ -20,31 +27,49 @@ public class StreamingAPIUnitTest {
     public void givenJsonGenerator_whenAppendJsonToIt_thenGenerateJson() throws IOException {
         // given
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        JsonFactory jfactory = new JsonFactory();
+        JsonFactory jfactory = new JsonFactory(new ObjectMapper());
         JsonGenerator jGenerator = jfactory.createGenerator(stream, JsonEncoding.UTF8);
 
         // when
         jGenerator.writeStartObject();
         jGenerator.writeStringField("name", "Tom");
         jGenerator.writeNumberField("age", 25);
-        jGenerator.writeFieldName("address");
+
+        jGenerator.writeFieldName("objects");
         jGenerator.writeStartArray();
-        jGenerator.writeString("Poland");
-        jGenerator.writeString("5th avenue");
-        IntStream.range(0, 619).forEach(it -> {
+        IntStream.range(0, 3).forEach(it -> {
             try {
-                jGenerator.writeString("address" + it);
+                jGenerator.writePOJO(new HashMap<String, String>() {{
+                    put("key1", "value1");
+                    put("key2", "value2");
+                }});
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new RuntimeException(e);
             }
         });
         jGenerator.writeEndArray();
-        jGenerator.writeNullField("xxxxxxx");
+
+        jGenerator.writeFieldName("strings");
+        jGenerator.writeStartArray();
+        jGenerator.writeString("textX");
+        jGenerator.writeString("textY");
+        IntStream.range(0, 3).forEach(it -> {
+            try {
+                jGenerator.writeString("text-" + it);
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        });
+        jGenerator.writeEndArray();
+
+        jGenerator.writeNullField("nullField");
         jGenerator.writeEndObject();
         jGenerator.close();
 
         // then
-        String json = new String(stream.toByteArray(), "UTF-8");
+        String json = stream.toString(StandardCharsets.UTF_8.name());
         assertEquals(json, "{\"name\":\"Tom\",\"age\":25,\"address\":[\"Poland\",\"5th avenue\"]}");
     }
 

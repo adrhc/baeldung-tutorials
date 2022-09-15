@@ -35,6 +35,35 @@ public class StreamingAPIUnitTest {
         jGenerator.writeStringField("name", "Tom");
         jGenerator.writeNumberField("age", 25);
 
+        // primitivePojo
+        jGenerator.writePOJOField("primitivePojo", 1);
+
+        jGenerator.writeFieldName("arrayInArray");
+        jGenerator.writeStartArray();
+        IntStream.range(0, 2).forEach(it -> {
+            try {
+                jGenerator.writeStartObject();
+                jGenerator.writeStringField("elem-name", "Tom");
+                jGenerator.writeFieldName("elem-strings");
+                jGenerator.writeStartArray();
+                IntStream.range(0, 2).forEach(i -> {
+                    try {
+                        jGenerator.writeString("elem-text-" + i);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new RuntimeException(e);
+                    }
+                });
+                jGenerator.writeEndArray();
+                jGenerator.writeEndObject();
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        });
+        jGenerator.writeEndArray();
+        jGenerator.flush();
+
         jGenerator.writeFieldName("objects");
         jGenerator.writeStartArray();
         IntStream.range(0, 3).forEach(it -> {
